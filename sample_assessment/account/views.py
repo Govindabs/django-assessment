@@ -28,12 +28,19 @@ def users(request):
 
 
 def admin(request):
-    user = User.objects.all()
+    labels = []
+    data = []
 
+    user = User.objects.all()
     my_filter = UserFilter(request.GET, queryset=user)
     user = my_filter.qs
 
-    context = {'users': user, 'my_filter': my_filter}
+    pie_chart_qs = User.objects.values('req_status').annotate(Count('req_status'))
+    for qs in pie_chart_qs:
+        labels.append(qs['req_status'])
+        data.append(qs['req_status__count'])
+
+    context = {'users': user, 'my_filter': my_filter, 'labels': labels, 'data': data}
     return render(request, 'account/admin.html', context)
 
 

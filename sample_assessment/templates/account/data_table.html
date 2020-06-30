@@ -1,0 +1,38 @@
+{% load crispy_forms_tags %}
+
+<div class="container" style="margin-top:20px">
+    <div class="justify-content-center">
+        <div class="row">
+            <form method="get">
+                {{my_filter.form.as_table}}
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <table class="table table-sm">
+                <tr>
+                    <th>user_id</th>
+                    <th>name</th>
+                    <th>phone_no</th>
+                    <th>email</th>
+                    <th>account_type</th>
+                    <th>req_status</th>
+                </tr>
+
+                {% for user in users %}
+
+                <tr>
+                    <td><a class="btn btn-sm btn-info"
+                           href="{% url 'update_status' user.user_id %}">{{user.user_id}}</a>
+                    </td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.phone_no}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.account_type}}</td>
+                    <td>{{user.req_status}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>

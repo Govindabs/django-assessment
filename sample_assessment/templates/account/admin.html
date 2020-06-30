@@ -2,43 +2,33 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <div class="text-center">
-    <h1>User request table</h1>
+    <h1>Admin Panel</h1>
 </div>
 
 <div class="container">
-    <div class="justify-content-center">
-        <div class="row">
-            <form method="get">
-                {{my_filter.form.as_table}}
-                <button type="submit">Search</button>
-            </form>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home">Data table</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu1">Pie chart</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane container active" id="home">
+            {% include 'account/data_table.html' with users=users my_filter=my_filter %}
         </div>
-        <div class="row" style="margin-top:30px;">
-            <table class="table table-sm">
-                <tr>
-                    <th>user_id</th>
-                    <th>name</th>
-                    <th>phone_no</th>
-                    <th>email</th>
-                    <th>account_type</th>
-                    <th>req_status</th>
-                </tr>
-
-                {% for user in users %}
-
-                <tr>
-                    <td><a class="btn btn-sm btn-info"
-                           href="{% url 'update_status' user.user_id %}">{{user.user_id}}</a>
-                    </td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.phone_no}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.account_type}}</td>
-                    <td>{{user.req_status}}</td>
-                </tr>
-                {% endfor %}
-            </table>
+        <div class="tab-pane container fade" id="menu1">
+            {% include 'account/pie_chart.html' with labels=labels data=data %}
         </div>
     </div>
 </div>
