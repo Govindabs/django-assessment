@@ -22,12 +22,12 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4_($7#l3!c16+u3p4$^e)(-r$&=8c5*70gnx)c)#8d)6gt9ona'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['govindabs.pythonanywhere.com','127.0.0.1']
 
 # Application definition
 
@@ -108,8 +108,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'tommy.govind@gmail.com'
-EMAIL_HOST_PASSWORD = 'Irlaogvieni@123'
+EMAIL_HOST_USER = '*****'
+EMAIL_HOST_PASSWORD = '*****'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
