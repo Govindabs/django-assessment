@@ -1,0 +1,26 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Confirm/Reject the user</h1>
+</div>
+
+<div class="container">
+    <div class="justify-content-center">
+        <form method='POST'>
+            {% csrf_token %}
+
+            <h3>User id: {{user.user_id}}</h3>
+
+            <h3>User name: {{user.name}}</h3>
+            <h3>User phone_no: {{user.phone_no}}</h3>
+            <h3>User email: {{user.email}}</h3>
+            <h3>User account_type: {{user.account_type}}</h3>
+
+            <input type="submit" class="btn btn-sm btn-info" value="Confirm" name="confirm">
+            <input type="submit" class="btn btn-sm btn-info" value="Reject" name="reject">
+        </form>
+    </div>
+</div>
+{% endblock %}

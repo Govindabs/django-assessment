@@ -1,0 +1,18 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="text-center">
+    <h1>User form</h1>
+</div>
+
+<div class="container">
+    <div class="justify-content-center">
+        <form method="POST" enctype="multipart/form-data" data-ajax="false">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+{% endblock %}
