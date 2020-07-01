@@ -68,16 +68,3 @@ def update_status(request, pk):
 
     context = {'user': user}
     return render(request, 'account/update_status.html', context)
-
-
-def pie_chart(request):
-    labels = []
-    data = []
-
-    queryset = User.objects.values('req_status').annotate(Count('req_status'))
-
-    for qs in queryset:
-        labels.append(qs['req_status'])
-        data.append(qs['req_status__count'])
-
-    return render(request, 'account/pie_chart.html', {'labels': labels, 'data': data, })
